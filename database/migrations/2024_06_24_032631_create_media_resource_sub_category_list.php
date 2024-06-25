@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsAsset extends Migration
+class CreateMediaResourceSubCategoryList extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateProductsAsset extends Migration
      */
     public function up()
     {
-        Schema::create('products_asset', function (Blueprint $table) {
+        Schema::create('media_resource_sub_category_list', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('media_resource_id');
+            $table->unsignedBigInteger('sub_category_id');
             $table->timestamps();
-            $table->integer('product_id');
-            $table->string('asset');
-            $table->string('asset_type');
         });
     }
 
@@ -29,6 +28,6 @@ class CreateProductsAsset extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products_asset');
+        Schema::dropIfExists('media_resource_sub_category_list');
     }
 }

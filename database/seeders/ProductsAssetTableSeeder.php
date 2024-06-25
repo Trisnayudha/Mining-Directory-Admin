@@ -22,12 +22,14 @@ class ProductsAssetTableSeeder extends Seeder
             $productsAssets[] = [
                 'product_id' => $i,
                 'asset' => "https://via.placeholder.com/500", // Image asset
+                'asset_type' => 'png',
                 'created_at' => now(),
                 'updated_at' => now()
             ];
             $productsAssets[] = [
                 'product_id' => $i,
                 'asset' => "https://www.youtube.com/watch?v=Np1vp318qYw", // Video asset
+                'asset_type' => 'mp4',
                 'created_at' => now(),
                 'updated_at' => now()
             ];

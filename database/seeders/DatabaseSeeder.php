@@ -19,7 +19,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ProductsAssetTableSeeder::class);
         $this->call(NewsTableSeeder::class);
         $this->call(ProjectsTableSeeder::class);
+        $this->call(MediaResourceTableSeeder::class);
         $this->call(VideosTableSeeder::class);
         $this->call(MdCategoryCompanyTableSeeder::class);
+        $this->call(MdSubCategoryCompanyTableSeeder::class);
     }
 }

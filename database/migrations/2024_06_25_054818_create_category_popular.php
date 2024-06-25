@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProductsAsset extends Migration
+class CreateCategoryPopular extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateProductsAsset extends Migration
      */
     public function up()
     {
-        Schema::create('products_asset', function (Blueprint $table) {
+        Schema::create('md_category_popular', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('product_id');
-            $table->string('asset');
-            $table->string('asset_type');
+            $table->integer('category_id');
         });
     }
 
@@ -29,6 +27,6 @@ class CreateProductsAsset extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('products_asset');
+        Schema::dropIfExists('category_popular');
     }
 }
