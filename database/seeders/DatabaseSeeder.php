@@ -23,5 +23,10 @@ class DatabaseSeeder extends Seeder
         $this->call(VideosTableSeeder::class);
         $this->call(MdCategoryCompanyTableSeeder::class);
         $this->call(MdSubCategoryCompanyTableSeeder::class);
+        $this->call(FAQProfileSeeder::class);
+        $this->call(FAQHomePageSeeder::class);
+        $this->call(PrivacyPolicySeeder::class);
+        $this->call(TermConditionSeeder::class);
+        $this->call(MdCarouselSeeder::class);
     }
 }
