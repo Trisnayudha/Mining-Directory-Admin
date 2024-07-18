@@ -18,7 +18,7 @@ class CreateUsers extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('prefix_phone')->unique();
+            $table->string('prefix_phone')->nullable();
             $table->string('phone')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
