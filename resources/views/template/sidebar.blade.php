@@ -89,7 +89,7 @@
         </ul>
     </li><!-- End Forms Nav -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="{{ url('') }}">
+        <a class="nav-link collapsed" href="{{ route('companies.index') }}">
             <i class="bi bi-building"></i>
             <span>Company</span>
         </a>

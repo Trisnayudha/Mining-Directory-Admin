@@ -28,7 +28,7 @@ Route::resource('videos', VideoController::class);
 
 // Routes for Company controllers
 Route::resource('companies', CompanyController::class);
-
+Route::post('companies/import', [CompanyController::class, 'import'])->name('companies.import');
 // Routes for Home controllers
 Route::resource('carousels', CarouselController::class);
 Route::resource('privacy-policies', PrivacynPoliceController::class);
