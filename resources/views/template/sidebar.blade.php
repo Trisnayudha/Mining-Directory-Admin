@@ -13,7 +13,7 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
-                <a href="{{ url('') }}">
+                <a href="{{ route('categories.index') }}">
                     <i class="bi bi-circle"></i><span>Category</span>
                 </a>
             </li>

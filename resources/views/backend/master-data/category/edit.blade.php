@@ -6,11 +6,21 @@
                 <div class="card-body">
                     <h5 class="card-title">Form</h5>
                     <!-- Vertical Form -->
-                    <form class="row g-3">
-                        <input type="hidden" name="id" value="{{ $id }}">
+                    <form class="row g-3" method="POST" action="{{ route('categories.update', $category->id) }}"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
                         <div class="col-12">
-                            <label for="category" class="form-label">Category Name</label>
-                            <input type="text" class="form-control" id="category" name="category">
+                            <label for="name" class="form-label">Category Name</label>
+                            <input type="text" class="form-control" id="name" name="name"
+                                value="{{ $category->name }}">
+                        </div>
+                        <div class="col-12">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
+                        </div>
+                        <div class="col-12">
+                            <img src="{{ $category->image }}" alt="{{ $category->image }}" class="img-fluid">
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Update</button>
@@ -22,7 +32,7 @@
         </div>
     @endsection
 
-    @push('breadcumbs')
+    @push('breadcrumbs')
         <div class="pagetitle">
             <h1>Category Edit</h1>
             <nav>

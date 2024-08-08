@@ -13,34 +13,31 @@
                         <thead>
                             <tr>
                                 <th>
-                                    <b>N</b>ame
+                                    Name
                                 </th>
-                                <th>Ext.</th>
-                                <th>City</th>
-                                <th data-type="date" data-format="YYYY/DD/MM">Start Date</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Unity Pugh</td>
-                                <td>9958</td>
-                                <td>Curicó</td>
-                                <td>2005/02/11</td>
-                                <td>
-                                    <div>
-                                        <form action="{{ route('categories.destroy', 1) }}" method="POST"
-                                            style="display:inline;">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger"><i
-                                                    class="bi bi-trash"></i></button>
-                                        </form>
-                                        <a href="{{ route('categories.edit', 1) }}" class="btn btn-secondary"><i
-                                                class="bi bi-pencil-square"></i></a>
-                                    </div>
-                                </td>
-                            </tr>
+                            @foreach ($categories as $key)
+                                <tr>
+                                    <td>{{ $key->name }}</td>
+                                    <td>
+                                        <div>
+                                            <form action="{{ route('categories.destroy', $key->id) }}" method="POST"
+                                                style="display:inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger"><i
+                                                        class="bi bi-trash"></i></button>
+                                            </form>
+                                            <a href="{{ route('categories.edit', $key->id) }}" class="btn btn-secondary"><i
+                                                    class="bi bi-pencil-square"></i></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                     <!-- End Table with stripped rows -->

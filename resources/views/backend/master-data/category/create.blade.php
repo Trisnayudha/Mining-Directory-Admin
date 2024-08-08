@@ -6,10 +6,15 @@
                 <div class="card-body">
                     <h5 class="card-title">Form</h5>
                     <!-- Vertical Form -->
-                    <form class="row g-3">
+                    <form class="row g-3" method="post" action="{{ route('categories.store') }}" enctype="multipart/form-data">
+                        @csrf
                         <div class="col-12">
-                            <label for="category" class="form-label">Category Name</label>
-                            <input type="text" class="form-control" id="category" name="category">
+                            <label for="name" class="form-label">Category Name</label>
+                            <input type="text" class="form-control" id="name" name="name">
+                        </div>
+                        <div class="col-12">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="image" name="image">
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary">Submit</button>

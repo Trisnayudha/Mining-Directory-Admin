@@ -37,11 +37,6 @@ class CategoryController extends Controller
         }
     }
 
-    public function show($id)
-    {
-        // Logika untuk menampilkan data tertentu
-    }
-
     public function edit($id)
     {
         $category = $this->categoryService->find($id);

@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\CompanyCategory as Category;
+use App\Models\MdCategoryCompany;
+use App\Helpers\FileHelper;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryService
 {
@@ -13,8 +15,11 @@ class CategoryService
         try {
             DB::beginTransaction();
 
-            $category = Category::create($data);
+            if (isset($data['image'])) {
+                $data['image'] = FileHelper::saveFile($data['image'], 'public/images/category');
+            }
 
+            $category = MdCategoryCompany::create($data);
             DB::commit();
 
             return ['status' => true, 'message' => 'Category created successfully.', 'data' => $category];
@@ -29,9 +34,18 @@ class CategoryService
         try {
             DB::beginTransaction();
 
-            $category = Category::findOrFail($id);
-            $category->update($data);
+            $category = MdCategoryCompany::findOrFail($id);
 
+            if (isset($data['image'])) {
+                // Delete old image if exists
+                if ($category->image) {
+                    $oldImagePath = str_replace(url('/storage/'), 'public/', $category->image);
+                    Storage::delete($oldImagePath);
+                }
+                $data['image'] = FileHelper::saveFile($data['image'], 'public/images/category');
+            }
+
+            $category->update($data);
             DB::commit();
 
             return ['status' => true, 'message' => 'Category updated successfully.', 'data' => $category];
@@ -46,9 +60,12 @@ class CategoryService
         try {
             DB::beginTransaction();
 
-            $category = Category::findOrFail($id);
+            $category = MdCategoryCompany::findOrFail($id);
+            if ($category->image) {
+                $oldImagePath = str_replace(url('/storage/'), 'public/', $category->image);
+                Storage::delete($oldImagePath);
+            }
             $category->delete();
-
             DB::commit();
 
             return ['status' => true, 'message' => 'Category deleted successfully.'];
@@ -60,11 +77,11 @@ class CategoryService
 
     public function getAll()
     {
-        return Category::all();
+        return MdCategoryCompany::all();
     }
 
     public function find($id)
     {
-        return Category::findOrFail($id);
+        return MdCategoryCompany::findOrFail($id);
     }
 }

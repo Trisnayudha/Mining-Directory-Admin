@@ -9,7 +9,9 @@ class MdCategoryCompany extends Model
 {
     use  HasFactory;
     protected $table = 'md_category_company';
-
+    protected $fillable = [
+        'name', 'image'
+    ];
     public function subCategories()
     {
         return $this->hasMany(MdSubCategoryCompany::class, 'category_id', 'id');
