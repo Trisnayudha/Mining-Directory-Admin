@@ -8,29 +8,29 @@
     </li><!-- End Dashboard Nav -->
 
     <li class="nav-item">
-        <a class="{{ request()->routeIs('categories.index') || request()->routeIs('sub-categories.index') ? 'nav-link' : 'nav-link collapsed' }}"
+        <a class="{{ request()->routeIs('categories.*') || request()->routeIs('sub-categories.*') || request()->routeIs('popular-categories.*') ? 'nav-link' : 'nav-link collapsed' }}"
             data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
             <i class="bi bi-menu-button-wide"></i><span>Master Data</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav"
             class="nav-content collapse
-            {{ request()->routeIs('categories.index') || request()->routeIs('sub-categories.index') || request()->routeIs('popular-categories') ? 'show' : '' }}"
+            {{ request()->routeIs('categories.*') || request()->routeIs('sub-categories.*') || request()->routeIs('popular-categories.*') ? 'show' : '' }}"
             data-bs-parent="#sidebar-nav">
             <li>
                 <a href="{{ route('categories.index') }}"
-                    class="{{ request()->routeIs('categories.index') ? 'active' : '' }}">
+                    class="{{ request()->routeIs('categories.*') ? 'active' : '' }}">
                     <i class="bi bi-circle"></i><span>Category</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('sub-categories.index') }}"
-                    class="{{ request()->routeIs('sub-categories.index') ? 'active' : '' }}">
+                    class="{{ request()->routeIs('sub-categories.*') ? 'active' : '' }}">
                     <i class="bi bi-circle"></i><span>Sub Category</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('popular-categories') }}"
-                    class="{{ request()->is('popular-categories') ? 'active' : '' }}">
+                <a href="{{ route('popular-categories.index') }}"
+                    class="{{ request()->routeIs('popular-categories.*') ? 'active' : '' }}">
                     <i class="bi bi-circle"></i><span>Popular Category</span>
                 </a>
             </li>
@@ -105,7 +105,7 @@
     </li><!-- End Forms Nav -->
 
     <li class="nav-item">
-        <a class="{{ request()->routeIs('companies.index') ? 'nav-link' : 'nav-link collapsed' }}"
+        <a class="{{ request()->routeIs('companies.*') ? 'nav-link' : 'nav-link collapsed' }}"
             href="{{ route('companies.index') }}">
             <i class="bi bi-building"></i>
             <span>Company</span>
