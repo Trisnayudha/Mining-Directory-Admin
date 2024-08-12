@@ -8,13 +8,13 @@
     </li><!-- End Dashboard Nav -->
 
     <li class="nav-item">
-        <a class="{{ request()->routeIs('categories.*') || request()->routeIs('sub-categories.*') || request()->routeIs('popular-categories.*') ? 'nav-link' : 'nav-link collapsed' }}"
+        <a class="{{ request()->routeIs('categories.*') || request()->routeIs('sub-categories.*') || request()->routeIs('popular-categories.*') || request()->routeIs('project-types.*') ? 'nav-link' : 'nav-link collapsed' }}"
             data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
             <i class="bi bi-menu-button-wide"></i><span>Master Data</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav"
             class="nav-content collapse
-            {{ request()->routeIs('categories.*') || request()->routeIs('sub-categories.*') || request()->routeIs('popular-categories.*') ? 'show' : '' }}"
+            {{ request()->routeIs('categories.*') || request()->routeIs('sub-categories.*') || request()->routeIs('popular-categories.*') || request()->routeIs('project-types.*') ? 'show' : '' }}"
             data-bs-parent="#sidebar-nav">
             <li>
                 <a href="{{ route('categories.index') }}"
@@ -35,7 +35,8 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('') }}" class="{{ request()->is('your-url-here') ? 'active' : '' }}">
+                <a href="{{ route('project-types.index') }}"
+                    class="{{ request()->routeIs('project-types.*') ? 'active' : '' }}">
                     <i class="bi bi-circle"></i><span>Project Type</span>
                 </a>
             </li>

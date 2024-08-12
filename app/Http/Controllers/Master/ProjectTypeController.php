@@ -3,83 +3,64 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Services\ProjectTypeService;
 use Illuminate\Http\Request;
 
 class ProjectTypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $projectTypeCategories;
+
+    public function __construct(ProjectTypeService $projectTypeCategories)
+    {
+        $this->projectTypeCategories = $projectTypeCategories;
+    }
     public function index()
     {
-        //
+        $categories = $this->projectTypeCategories->getAll();
+        return view('backend.master-data.project-type.index', compact('categories'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('backend.master-data.project-type.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $result = $this->projectTypeCategories->store($request->all());
+
+        if ($result['status']) {
+            return redirect()->route('project-types.index')->with('success', $result['message']);
+        } else {
+            return redirect()->back()->with('error', $result['message']);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $category = $this->projectTypeCategories->find($id);
+        return view('backend.master-data.project-type.edit', compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->projectTypeCategories->update($request->all(), $id);
+
+        if ($result['status']) {
+            return redirect()->route('project-types.index')->with('success', $result['message']);
+        } else {
+            return redirect()->back()->with('error', $result['message']);
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $result = $this->projectTypeCategories->destroy($id);
+
+        if ($result['status']) {
+            return redirect()->route('project-types.index')->with('success', $result['message']);
+        } else {
+            return redirect()->back()->with('error', $result['message']);
+        }
     }
 }
