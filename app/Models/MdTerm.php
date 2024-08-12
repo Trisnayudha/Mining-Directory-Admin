@@ -16,6 +16,6 @@ class MdTerm extends Model
      * @var array
      */
     protected $fillable = [
-        //
+        'content'
     ];
 }

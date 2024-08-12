@@ -5,17 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MdPrivacy extends Model
+class MdStatistic extends Model
 {
     use  HasFactory;
-    protected $table = 'md_privacy';
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    protected $table = 'md_statistic';
     protected $fillable = [
-        'content'
+        'data_1',
+        'data_2',
+        'data_3',
     ];
 }

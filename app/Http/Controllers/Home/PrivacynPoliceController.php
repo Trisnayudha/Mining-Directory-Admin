@@ -3,10 +3,17 @@
 namespace App\Http\Controllers\Home;
 
 use App\Http\Controllers\Controller;
+use App\Services\PrivacyTermService;
 use Illuminate\Http\Request;
 
 class PrivacynPoliceController extends Controller
 {
+    protected $privacyTermService;
+
+    public function __construct(PrivacyTermService $privacyTermService)
+    {
+        $this->privacyTermService = $privacyTermService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,9 @@ class PrivacynPoliceController extends Controller
      */
     public function index()
     {
-        //
+        $privacy = $this->privacyTermService->findPrivacy();
+        $term = $this->privacyTermService->findTerm();
+        return view('backend.home-preference.privacy-term.index', compact('privacy', 'term'));
     }
 
     /**
@@ -69,7 +78,13 @@ class PrivacynPoliceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->privacyTermService->update($request->all(), $id);
+
+        if ($result['status']) {
+            return redirect()->route('privacy-policies.index')->with('success', $result['message']);
+        } else {
+            return redirect()->back()->with('error', $result['message']);
+        }
     }
 
     /**

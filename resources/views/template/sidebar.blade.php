@@ -44,30 +44,35 @@
     </li><!-- End Components Nav -->
 
     <li class="nav-item">
-        <a class="{{ request()->is('your-url-here') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#home-nav"
-            data-bs-toggle="collapse" href="#">
+        <a class="{{ request()->routeIs('carousels.*') || request()->routeIs('statistics.*') || request()->routeIs('privacy-policies.*') ? 'nav-link' : 'nav-link collapsed' }}"
+            data-bs-target="#home-nav" data-bs-toggle="collapse" href="#">
             <i class="bi bi-house-door"></i><span>Home Reference</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="home-nav" class="nav-content collapse
-            {{ request()->is('your-url-here') ? 'show' : '' }}"
+        <ul id="home-nav"
+            class="nav-content collapse
+            {{ request()->routeIs('carousels.*') || request()->routeIs('statistics.*') || request()->routeIs('privacy-policies.*') ? 'show' : '' }}"
             data-bs-parent="#sidebar-nav">
             <li>
-                <a href="{{ url('') }}" class="{{ request()->is('your-url-here') ? 'active' : '' }}">
+                <a href="{{ route('carousels.index') }}"
+                    class="{{ request()->routeIs('carousels.*') ? 'active' : '' }}">
                     <i class="bi bi-circle"></i><span>Carousel</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('') }}" class="{{ request()->is('your-url-here') ? 'active' : '' }}">
+                <a href="{{ route('statistics.index') }}"
+                    class="{{ request()->routeIs('statistics.*') ? 'active' : '' }}">
                     <i class="bi bi-circle"></i><span>Statistic</span>
                 </a>
             </li>
             <li>
-                <a href="{{ url('') }}" class="{{ request()->is('your-url-here') ? 'active' : '' }}">
+                <a href="{{ route('privacy-policies.index') }}"
+                    class="{{ request()->routeIs('privacy-policies.*') ? 'active' : '' }}">
                     <i class="bi bi-circle"></i><span>Privacy & Term</span>
                 </a>
             </li>
         </ul>
     </li><!-- End Home Reference Nav -->
+
 
     <li class="nav-item">
         <a class="{{ request()->is('your-url-here') ? 'nav-link' : 'nav-link collapsed' }}" data-bs-target="#forms-nav"
