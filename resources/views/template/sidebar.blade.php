@@ -14,7 +14,7 @@
         </a>
         <ul id="components-nav"
             class="nav-content collapse
-            {{ request()->routeIs('categories.index') || request()->routeIs('sub-categories.index') ? 'show' : '' }}"
+            {{ request()->routeIs('categories.index') || request()->routeIs('sub-categories.index') || request()->routeIs('popular-categories') ? 'show' : '' }}"
             data-bs-parent="#sidebar-nav">
             <li>
                 <a href="{{ route('categories.index') }}"
@@ -29,7 +29,8 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('') }}" class="{{ request()->is('your-url-here') ? 'active' : '' }}">
+                <a href="{{ url('popular-categories') }}"
+                    class="{{ request()->is('popular-categories') ? 'active' : '' }}">
                     <i class="bi bi-circle"></i><span>Popular Category</span>
                 </a>
             </li>

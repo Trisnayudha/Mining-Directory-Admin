@@ -9,7 +9,9 @@ class MdCategoryPopular extends Model
 {
     use  HasFactory;
     protected $table = 'md_category_popular';
-
+    protected $fillable = [
+        'category_id'
+    ];
     public function category()
     {
         return $this->belongsTo(MdCategoryCompany::class, 'category_id', 'id');
