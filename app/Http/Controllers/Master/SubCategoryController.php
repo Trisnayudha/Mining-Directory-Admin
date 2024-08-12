@@ -3,10 +3,20 @@
 namespace App\Http\Controllers\Master;
 
 use App\Http\Controllers\Controller;
+use App\Services\CategoryService;
+use App\Services\SubCategoryService;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
 {
+    protected $subCategoryService;
+    protected $categoryService;
+
+    public function __construct(SubCategoryService $subCategoryService, CategoryService $categoryService)
+    {
+        $this->subCategoryService = $subCategoryService;
+        $this->categoryService = $categoryService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,8 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $subCategories = $this->subCategoryService->getAll();
+        return view('backend.master-data.sub-category.index', compact('subCategories'));
     }
 
     /**
@@ -24,7 +35,8 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        //
+        $categories = $this->categoryService->getAll();
+        return view('backend.master-data.sub-category.create', compact('categories'));
     }
 
     /**
@@ -35,7 +47,14 @@ class SubCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        $result = $this->subCategoryService->store($request->all());
+
+        if ($result['status']) {
+            return redirect()->route('sub-categories.index')->with('success', $result['message']);
+        } else {
+            return redirect()->back()->with('error', $result['message']);
+        }
     }
 
     /**
@@ -57,7 +76,9 @@ class SubCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $subCategories = $this->subCategoryService->find($id);
+        $categories = $this->categoryService->getAll();
+        return view('backend.master-data.sub-category.edit', compact('categories', 'subCategories'));
     }
 
     /**
@@ -69,7 +90,13 @@ class SubCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $result = $this->subCategoryService->update($request->all(), $id);
+
+        if ($result['status']) {
+            return redirect()->route('sub-categories.index')->with('success', $result['message']);
+        } else {
+            return redirect()->back()->with('error', $result['message']);
+        }
     }
 
     /**
@@ -80,6 +107,12 @@ class SubCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $result = $this->subCategoryService->destroy($id);
+
+        if ($result['status']) {
+            return redirect()->route('sub-categories.index')->with('success', $result['message']);
+        } else {
+            return redirect()->back()->with('error', $result['message']);
+        }
     }
 }

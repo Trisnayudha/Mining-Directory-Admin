@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ url('') }}">
+                <a href="{{ route('sub-categories.index') }}">
                     <i class="bi bi-circle"></i><span>Sub Category</span>
                 </a>
             </li>

@@ -11,7 +11,7 @@ class CreateMdSubCategoryCompany extends Migration
         Schema::create('md_sub_category_company', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->timestamps();
 
