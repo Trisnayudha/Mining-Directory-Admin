@@ -5,6 +5,7 @@ use App\Http\Controllers\Asset\NewsController;
 use App\Http\Controllers\Asset\ProductController;
 use App\Http\Controllers\Asset\ProjectController;
 use App\Http\Controllers\Asset\VideoController;
+use App\Http\Controllers\Company\CompanyAddressController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Home\CarouselController;
@@ -29,6 +30,10 @@ Route::resource('videos', VideoController::class);
 // Routes for Company controllers
 Route::resource('companies', CompanyController::class);
 Route::post('companies/import', [CompanyController::class, 'import'])->name('companies.import');
+// Routes for Company Address controllers
+Route::get('companies-address/{slug}', [CompanyAddressController::class, 'index'])->name('companies-address.index');
+Route::get('companies-address/create/{slug}', [CompanyAddressController::class, 'create'])->name('companies-address.create');
+Route::resource('companies-address', CompanyAddressController::class)->except(['index', 'create']);
 // Routes for Home controllers
 Route::resource('carousels', CarouselController::class);
 Route::resource('privacy-policies', PrivacynPoliceController::class);

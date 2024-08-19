@@ -16,6 +16,17 @@ class CompanyAddress extends Model
      * @var array
      */
     protected $fillable = [
-        'type', 'town', 'country', 'company_id', 'phone', 'address', 'city', 'province', 'postal_code'
+        'type',
+        'town',
+        'country',
+        'company_id',
+        'phone',
+        'address',
+        'city',
+        'province',
+        'postal_code',
+        'email',
+        'phone_company',
+        'prefix_phone_company'
     ];
 }

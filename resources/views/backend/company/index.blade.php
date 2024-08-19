@@ -43,7 +43,7 @@
                                                     class="btn btn-outline-danger btn-sm m-1">Delete</button>
                                             </form>
                                             <a href="" class="btn btn-outline-info btn-sm m-1">Address</a>
-                                            <a href=""
+                                            <a href="{{ route('companies-address.index', $item->slug) }}"
                                                 class="btn btn-outline-info btn-sm ml-1 m-1">Representative</a>
                                         </div>
                                     </div>

@@ -12,10 +12,10 @@ use Laravel\Lumen\Auth\Authorizable;
 use Laravel\Sanctum\HasApiTokens;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
-    protected $table = 'cms_users';
+    use  HasFactory, Notifiable;
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -26,16 +26,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'prefix_phone',
-        'phone',
-        'marketing',
-        'explore',
-        'verification_token',
-        'job_title',
-        'company_name',
-        'image',
-        'about',
-        'background_image'
     ];
 
     /**

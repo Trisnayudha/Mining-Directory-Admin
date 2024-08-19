@@ -3,10 +3,17 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
+use App\Services\UsersService;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
 {
+    protected $usersService;
+
+    public function __construct(UsersService $usersService)
+    {
+        $this->usersService = $usersService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +21,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.users.index');
     }
 
     /**

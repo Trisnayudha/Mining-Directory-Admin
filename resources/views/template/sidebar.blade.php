@@ -127,8 +127,8 @@
     </li><!-- End Transaction Nav -->
 
     <li class="nav-item">
-        <a class="{{ request()->is('your-url-here') ? 'nav-link' : 'nav-link collapsed' }}"
-            href="{{ url('') }}">
+        <a class="{{ request()->routeIs('users.*') ? 'nav-link' : 'nav-link collapsed' }}"
+            href="{{ route('users.index') }}">
             <i class="bi bi-person-fill"></i>
             <span>Users</span>
         </a>
