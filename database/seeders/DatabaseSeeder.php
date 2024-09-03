@@ -14,19 +14,20 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UserSeeder::class);
-        $this->call(CompanySeeder::class);
-        $this->call(ProductsTableSeeder::class);
-        $this->call(ProductsAssetTableSeeder::class);
-        $this->call(NewsTableSeeder::class);
-        $this->call(ProjectsTableSeeder::class);
-        $this->call(MediaResourceTableSeeder::class);
-        $this->call(VideosTableSeeder::class);
-        $this->call(MdCategoryCompanyTableSeeder::class);
-        $this->call(MdSubCategoryCompanyTableSeeder::class);
-        $this->call(FAQProfileSeeder::class);
-        $this->call(FAQHomePageSeeder::class);
-        $this->call(PrivacyPolicySeeder::class);
-        $this->call(TermConditionSeeder::class);
-        $this->call(MdCarouselSeeder::class);
+        // $this->call(CompanySeeder::class);
+        // $this->call(ProductsTableSeeder::class);
+        // $this->call(ProductsAssetTableSeeder::class);
+        // $this->call(NewsTableSeeder::class);
+        // $this->call(ProjectsTableSeeder::class);
+        // $this->call(MediaResourceTableSeeder::class);
+        // $this->call(VideosTableSeeder::class);
+        // $this->call(MdCategoryCompanyTableSeeder::class);
+        // $this->call(MdSubCategoryCompanyTableSeeder::class);
+        // $this->call(FAQProfileSeeder::class);
+        // $this->call(FAQHomePageSeeder::class);
+        // $this->call(PrivacyPolicySeeder::class);
+        // $this->call(TermConditionSeeder::class);
+        // $this->call(MdCarouselSeeder::class);
+        $this->call(PricingPlansTableSeeder::class);
     }
 }
